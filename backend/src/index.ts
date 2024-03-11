@@ -4,8 +4,10 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import userRoutes from "./routes/userRoutes";
 import authRoute from "./routes/authRoute";
+import myHotelsRoutes from "./routes/my-hotelRoute";
 import cookieParser from "cookie-parser";
 import path from "path";
+import { v2 as cloudniary } from "cloudinary";
 
 // const connectDB = async () => {
 //   try {
@@ -18,6 +20,12 @@ import path from "path";
 //   }
 // };
 // connectDB();
+
+cloudniary.config({
+  cloud_name: process.env.CLOUDNIARY_CLOUD_NAME,
+  api_key: process.env.CLOUDNIARY_API_KEY,
+  api_secret: process.env.CLOUDNIARY_API_SECRET,
+});
 
 mongoose
   .connect(process.env.MONGODB_CONNECTION_STRING as string)
@@ -39,6 +47,7 @@ app.use(
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoutes);
+app.use("/api/my-hotels", myHotelsRoutes);
 
 app.listen(4000, () => {
   console.log("server is running on local host 4000");

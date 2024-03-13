@@ -2,9 +2,11 @@ import { Request, Response } from "express";
 import multer from "multer";
 import cloudinary from "cloudinary";
 import express from "express";
-import Hotel, { HotelType } from "../model/hotel";
+import Hotel from "../model/hotel";
+import { HotelType } from "../shared/types";
 import verifyToken from "../middleware/authMiddlewear";
 import { body } from "express-validator";
+import { viewHotelsController } from "../controller/hotelController";
 // import { myHotelController } from '../controller/hotelController';
 const router = express.Router();
 
@@ -62,5 +64,7 @@ router.post(
     }
   }
 );
+
+router.get("/", verifyToken, viewHotelsController);
 
 export default router;

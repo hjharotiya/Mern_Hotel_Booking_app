@@ -13,3 +13,25 @@ export const viewHotelsController = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Error in Fetching Hotels" });
   }
 };
+
+// HOTEL EDIT CONTROLLER
+
+export const editHotelController = async (req: Request, res: Response) => {
+  const id = req.params.id.toString();
+  try {
+    const hotel = await Hotel.findOne({
+      _id: id,
+      userId: req.userId,
+    });
+    res.json(hotel);
+  } catch (error) {
+    res.status(500).json({ message: "Error in Fetching Hotels" });
+  }
+};
+
+export const editImageController = async (req: Request, res: Response) => {
+  try {
+  } catch (error) {
+    res.status(500).json({ message: "Something Went Wrong" });
+  }
+};

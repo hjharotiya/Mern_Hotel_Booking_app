@@ -2,6 +2,7 @@ import { Request, RequestHandler, Response } from "express";
 import multer from "multer";
 import cloudinary from "cloudinary";
 import Hotel from "../model/hotel";
+import { HotelType } from "../shared/types";
 
 // export const myHotelController =
 export const viewHotelsController = async (req: Request, res: Response) => {
@@ -29,9 +30,5 @@ export const editHotelController = async (req: Request, res: Response) => {
   }
 };
 
-export const editImageController = async (req: Request, res: Response) => {
-  try {
-  } catch (error) {
-    res.status(500).json({ message: "Something Went Wrong" });
-  }
-};
+// export const editImageController = async
+// };

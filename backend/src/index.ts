@@ -8,6 +8,7 @@ import myHotelsRoutes from "./routes/my-hotelRoute";
 import cookieParser from "cookie-parser";
 import path from "path";
 import { v2 as cloudniary } from "cloudinary";
+import hotelRoutes from "./routes/hotel";
 
 // const connectDB = async () => {
 //   try {
@@ -48,6 +49,7 @@ app.use(
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoutes);
 app.use("/api/my-hotels", myHotelsRoutes);
+app.use("/api/hotels", hotelRoutes);
 
 app.get("*", (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
